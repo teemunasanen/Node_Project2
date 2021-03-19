@@ -1,66 +1,71 @@
 <div class="container">
-    <form>
+  <form>
     <div class="row justify-content-center text-center">
-        <div class="col-xl-3">
-        <label for="search" class="form-text text-info text-nowrap"><p class="h5">Search photos from Pixabay</p></label></div>
-   
-    <div class="col-lg-3">
- 
-    <input class="form-control text-info bg-dark" type="search" placeholder="Add something..." aria-label="Search" id="search" required>
-</div>
-<div class="col-lg-3 d-grid gap-2 ">
-    <button class="btn btn-outline-info" type="button" id="searchImages">Search</button>
-</div>
-</div>
-</form>
+      <div class="col-xl-3">
+        <label for="search" class="form-text text-info text-nowrap"
+          ><p class="h5">Search photos from Pixabay</p></label
+        >
+      </div>
 
-
-<h5 id="title" class="text-warning text-center"></h5>
-<div class="card-columns" >
-    
-    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center"id="target">
-
-
+      <div class="col-lg-3">
+        <input
+          class="form-control text-info bg-dark"
+          type="search"
+          placeholder="Add something..."
+          aria-label="Search"
+          id="search"
+          required
+        />
+      </div>
+      <div class="col-lg-3 d-grid gap-2">
+        <button class="btn btn-outline-info" type="button" id="searchImages">
+          Search
+        </button>
+      </div>
     </div>
-</div>
+  </form>
+
+  <h5 id="title" class="text-warning text-center"></h5>
+  <div class="card-columns">
+    <div
+      class="row row-cols-1 row-cols-md-3 g-4 justify-content-center"
+      id="target"
+    ></div>
+  </div>
 </div>
 <script>
- $(() => {
-        $("#searchImages").click(() => {
-           let value = $("#search").val();
-           $("#title").html("Your search: " + value);
+  $(() => {
+    $("#searchImages").click(() => {
+      let value = $("#search").val();
+      $("#title").html("Your search: " + value);
 
-           let url ="https://pixabay.com/api/?key=20762164-e8a8c67d40e03ad762273fa08&q=" + value;
+      let url =
+        "https://pixabay.com/api/?key=20762164-e8a8c67d40e03ad762273fa08&q=" +
+        value;
 
-           $.get(url, function (data) {
-               console.log(url);
- 
-    let out = "";
-   
-    for (i = 0; i < data.hits.length; i++) {
-        console.log(data.hits[i].user);
+      $.get(url, function (data) {
+        console.log(url);
 
-      out += "<div class='card' style=' background-color: #0000;''>";
+        let out = "";
 
-      out += "<img src='" + data.hits[i].webformatURL + "style='max-width: 35rem;max-height: 35rem;  class='card-img-top' alt='" + data.hits[i].tags + "'>";
-     
-      
-      
-      out += "</div>";
-      out += "<br>";
-    }
-   
- 
-    $("#target").html(out);
-    console.log(data);
+        for (i = 0; i < data.hits.length; i++) {
+          console.log(data.hits[i].user);
 
-}); 
-        });
+          out += "<div class='card' style=' background-color: #0000;''>";
+
+          out +=
+            "<img src='" +
+            data.hits[i].webformatURL +
+            "style='max-width: 35rem;max-height: 35rem;  class='card-img-top' alt='" +
+            data.hits[i].tags +
+            "'>";
+
+          out += "</div>";
+          out += "<br>";
+        }
+
+        $("#target").html(out);
+      });
     });
-    
+  });
 </script>
-
-
-
-
-  
