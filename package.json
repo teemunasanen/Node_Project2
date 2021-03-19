@@ -1,7 +1,7 @@
 {
   "name": "node_project2",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node.js Project 2: Small Project on Templates",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,5 +14,14 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "require": "^2.4.20"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teemunasanen/Node_Project2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/teemunasanen/Node_Project2/issues"
+  },
+  "homepage": "https://github.com/teemunasanen/Node_Project2#readme"
 }
