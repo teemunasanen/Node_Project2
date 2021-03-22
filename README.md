@@ -1,4 +1,8 @@
-Node.js Project 2: Small Project on Templates
+# Node.js Project 2: 
+Small Project on Templates
 
+Teemu Näsänen
 Laurea University of Applied Sciences
-Teemu Näsänen 2021
+2021
+
+https://node-pixabay.herokuapp.com/
