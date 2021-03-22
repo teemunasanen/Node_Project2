@@ -47,6 +47,7 @@
         console.log(url);
 
         let out = "";
+        if(data.hits.length>0){
 
         for (i = 0; i < data.hits.length; i++) {
           console.log(data.hits[i].user);
@@ -62,7 +63,10 @@
 
           out += "</div>";
           out += "<br>";
+       } }else{
+          out="Sorry no results, try another query!"
         }
+      
 
         $("#target").html(out);
       });
