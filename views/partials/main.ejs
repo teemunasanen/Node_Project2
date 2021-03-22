@@ -41,7 +41,7 @@
 
       let url =
         "https://pixabay.com/api/?key=20762164-e8a8c67d40e03ad762273fa08&q=" +
-        value;
+        value + "&per_page=21";
 
       $.get(url, function (data) {
         console.log(url);
@@ -57,7 +57,7 @@
           out +=
             "<img src='" +
             data.hits[i].webformatURL +
-            "style='max-width: 35rem;max-height: 35rem;  class='card-img-top' alt='" +
+            "class='card-img-top' alt='" +
             data.hits[i].tags +
             "'>";
 
