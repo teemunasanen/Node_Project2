@@ -37,45 +37,51 @@
   $(() => {
     $("#searchImages").click(() => {
       let value = $("#search").val();
+      if(value==""){
+        $("#title").html("You did not enter a search,<br> but you received pictures of monkeys!");
+        value="monkey";
+      }else{
       $("#title").html("Your search: " + value);
+      }
 
       let url =
         "https://pixabay.com/api/?key=20762164-e8a8c67d40e03ad762273fa08&q=" +
-        value + "&per_page=21";
+        value +
+        "&per_page=21";
 
       $.get(url, function (data) {
         console.log(url);
 
         let out = "";
-        if(data.hits.length>0){
+        if (data.hits.length > 0) {
+          for (i = 0; i < data.hits.length; i++) {
+            console.log(data.hits[i].user);
 
-        for (i = 0; i < data.hits.length; i++) {
-          console.log(data.hits[i].user);
+            out += "<div class='card' style=' background-color: #0000;''>";
 
-          out += "<div class='card' style=' background-color: #0000;''>";
+            out +=
+              "<img src='" +
+              data.hits[i].webformatURL +
+              "class='card-img-top' alt='" +
+              data.hits[i].tags +
+              "'>";
 
-          out +=
-            "<img src='" +
-            data.hits[i].webformatURL +
-            "class='card-img-top' alt='" +
-            data.hits[i].tags +
-            "'>";
-
-          out += "</div>";
-          out += "<br>";
-       } }else{
-          out="<p class='h5 text-center text-white-50'>Sorry no results, try another query!</p>";
+            out += "</div>";
+            out += "<br>";
+          }
+        } else {
+          out =
+            "<p class='h5 text-center text-white-50'>Sorry no results, try another query!</p>";
         }
-      
 
         $("#target").html(out);
       });
     });
   });
-  $('#search').keypress(function (e) {
-  if (e.which == 13) {
-    event.preventDefault();
-    $("#searchImages").click();
-  }
-});
+  $("#search").keypress(function (e) {
+    if (e.which == 13) {
+      event.preventDefault();
+      $("#searchImages").click();
+    }
+  });
 </script>
